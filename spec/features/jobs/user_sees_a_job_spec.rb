@@ -21,7 +21,7 @@ describe "User sees a specific job" do
     comment_2 = job.comments.create!(content: "Hiring manager left vm.")
 
     visit company_job_path(company, job)
-    save_and_open_page
+  
     expect(page).to have_content(comment_1.content)
     expect(page).to have_content(comment_2.content)
   end
