@@ -96,4 +96,10 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.before(:all) do
+    DatabaseCleaner.clean
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
