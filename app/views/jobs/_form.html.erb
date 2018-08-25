@@ -1,6 +1,13 @@
 <h3><%= link_to 'Add New Category', new_category_path %></h3>
 
 <%= form_for [@company, @job] do |f| %>
+  <%= f.label :category_id %>
+  <%= f.select :category_id do %>
+    <% @categories.each do |category| -%>
+      <%= content_tag(:option, category.name, value: category.id) %>
+    <% end %>
+  <% end %>
+
   <%= f.label :title %>
   <%= f.text_field :title %>
 
