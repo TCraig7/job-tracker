@@ -35,7 +35,9 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    # implement on your own!
+    @job.destroy
+
+    redirect_to company_path(@company)
   end
 
   private
