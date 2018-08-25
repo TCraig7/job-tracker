@@ -8,8 +8,6 @@ describe 'User can delete a job' do
     visit company_path(company)
     click_on 'Delete'
 
-    save_and_open_page
-
     expect(page).to_not have_content('Developer')
   end
 end
