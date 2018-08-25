@@ -1,0 +1,5 @@
+<%= form_for [ @company, @job, @comment ] do |f| %>
+<%= f.label :content %>
+<%= f.text_area :content %>
+<%= f.submit "Save" %>
+<% end %>
