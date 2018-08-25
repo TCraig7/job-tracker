@@ -24,9 +24,13 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @category.update(category_params)
-
-    redirect_to categories_path
+    if @category.update(category_params)
+      flash[:success] = "#{@category.name} added!"
+      redirect_to categories_path
+    else
+      flash[:failure] = 'Sorry, this category name already exists!'
+      redirect_to edit_category_path(@category)
+    end
   end
 
   private
