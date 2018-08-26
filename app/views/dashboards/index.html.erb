@@ -8,3 +8,12 @@
     </li>
   </ul>
 <% end %>
+
+<% @companies_by_interest.each do |company| %>
+  <ul>
+    <li><%= company.name %></li>
+    <li id="job-interest-by-company-<%= company.id %>">
+      <%= company.avg_interest %>
+    </li>
+  </ul>
+<% end %>
