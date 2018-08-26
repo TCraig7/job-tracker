@@ -16,7 +16,7 @@ describe "User sees one company" do
     contact2 = company.contacts.create!(name: "Judge Judy", position: "On Staff Judger", email: "judyjudgesyou@gmail.com")
 
     visit company_path(company)
-    save_and_open_page
+
     expect(page).to have_content(contact1.name)
     expect(page).to have_content(contact1.position)
     expect(page).to have_content(contact1.email)
