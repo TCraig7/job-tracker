@@ -9,11 +9,24 @@
   </ul>
 <% end %>
 
+<hr>
+
 <% @companies_by_interest.each do |company| %>
   <ul>
     <li><%= company.name %></li>
     <li id="job-interest-by-company-<%= company.id %>">
-      <%= company.avg_interest %>
+      <%= company.avg_interest.round(1) %> Stars
+    </li>
+  </ul>
+<% end %>
+
+<hr>
+
+<% @count_by_interest.each do |interest_level, count| %>
+  <ul>
+    <li><%= interest_level %> out of 5</li>
+    <li id="level-of-interest-count-<%= interest_level %>">
+      <%= count %>
     </li>
   </ul>
 <% end %>

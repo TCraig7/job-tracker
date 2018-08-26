@@ -6,6 +6,30 @@ describe Job do
   end
   describe "Class Methods" do
     it ".count_by_location" do
+      company1 = Company.create!(name: 'ESPN')
+      company2 = Company.create!(name: 'Google')
+      company3 = Company.create!(name: 'Twitter')
+      company4 = Company.create!(name: 'GoDaddy')
+      category = Category.create!(name: 'Something')
+      job1 = company1.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 1, city: 'Denver', category_id: category.id)
+      job2 = company1.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 1, city: 'Denver', category_id: category.id)
+      job3 = company2.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 2, city: 'Denver', category_id: category.id)
+      job4 = company2.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 2, city: 'Boulder', category_id: category.id)
+      job5 = company2.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 3, city: 'Boulder', category_id: category.id)
+      job6 = company3.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 3, city: 'Reno', category_id: category.id)
+      job7 = company3.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 3, city: 'Reno', category_id: category.id)
+      job8 = company3.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 4, city: 'Atlanta', category_id: category.id)
+      job9 = company4.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Portland', category_id: category.id)
+
+      count_by_interest = Job.count_by_interest
+
+      expect(count_by_interest[5]).to eq 1
+      expect(count_by_interest[4]).to eq 1
+      expect(count_by_interest[3]).to eq 3
+      expect(count_by_interest[2]).to eq 2
+      expect(count_by_interest[1]).to eq 2
+    end
+    it ".count_by_location" do
       company = Company.create!(name: 'ESPN')
       category = Category.create!(name: 'Something')
       job1 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Denver', category_id: category.id)
