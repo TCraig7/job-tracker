@@ -27,13 +27,14 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company = Company.find(params[:id])
-    @company.update(company_params)
-    if @company.save
-      flash[:success] = "#{@company.name} updated!"
-      redirect_to company_path(@company)
+    company = Company.find(params[:id])
+    company.update(company_params)
+    if company.save
+      flash[:success] = "#{company.name} updated!"
+      redirect_to company_path(company)
     else
-      render :edit
+      flash[:failure] = "Company #{params[:company][:name]} already exists!"
+      redirect_to edit_company_path(company)
     end
   end
 
