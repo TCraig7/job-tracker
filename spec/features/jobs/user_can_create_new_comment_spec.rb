@@ -6,12 +6,12 @@ describe 'User can comment on jobs' do
     company = Company.create!(name: 'ESPN')
     job = company.jobs.create!(title: 'Developer', level_of_interest: 70, city: 'Denver', category_id: category.id)
 
-    visit company_job_path(company, job)
+    visit job_path(job)
 
     fill_in "comment[content]", with: "Talked to hiring manager."
     click_on "Save"
 
-    expect(current_path).to eq(company_job_path(company, job))
+    expect(current_path).to eq(job_path(job))
     expect(page).to have_content("Talked to hiring manager.")
   end
 end

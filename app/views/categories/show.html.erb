@@ -5,7 +5,7 @@
     <li><%= link_to job.company.name, company_path(job.company) %></li>
     <li><%= job.city %></li>
     <li><%= job.level_of_interest %></li>
-    <li><%= link_to 'Edit', edit_company_job_path(job.company, job) %></li>
-    <li><%= link_to 'Delete', company_job_path(job.company, job), method: :delete, data: {confirm: "Really delete #{job.title} job?"} %></li>
+    <li><%= link_to 'Edit', edit_job_path(job) %></li>
+    <li><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: "Really delete #{job.title} job?"} %></li>
   </ul>
 <% end %>
