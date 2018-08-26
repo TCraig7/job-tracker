@@ -1,0 +1,10 @@
+<h1>Job Tracker</h1>
+
+<% @jobs_by_location.each do |city, job_count| %>
+  <ul>
+    <li><%= city %> Jobs</li>
+    <li id="job-count-by-location-<%= city %>">
+      <%= job_count %> <%= job_count > 1 ? 'jobs' : 'job' %>
+    </li>
+  </ul>
+<% end %>

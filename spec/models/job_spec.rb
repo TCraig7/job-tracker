@@ -4,6 +4,29 @@ describe Job do
   before(:each) do
     @category = Category.create!(name: 'Some Category')
   end
+  describe "Class Methods" do
+    it ".count_by_location" do
+      company = Company.create!(name: 'ESPN')
+      category = Category.create!(name: 'Something')
+      job1 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Denver', category_id: category.id)
+      job2 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Denver', category_id: category.id)
+      job3 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Denver', category_id: category.id)
+      job4 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Boulder', category_id: category.id)
+      job5 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Boulder', category_id: category.id)
+      job6 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Reno', category_id: category.id)
+      job7 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Reno', category_id: category.id)
+      job8 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Atlanta', category_id: category.id)
+      job9 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Portland', category_id: category.id)
+
+      jobs_by_location = Job.count_by_location
+
+      expect(jobs_by_location["Denver"]).to eq 3
+      expect(jobs_by_location["Boulder"]).to eq 2
+      expect(jobs_by_location["Reno"]).to eq 2
+      expect(jobs_by_location["Atlanta"]).to eq 1
+      expect(jobs_by_location["Portland"]).to eq 1
+    end
+  end
   describe "validations" do
     context "invalid attributes" do
       it "is invalid without a title" do

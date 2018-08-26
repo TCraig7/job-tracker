@@ -3,4 +3,8 @@ class Job < ApplicationRecord
   belongs_to :company, dependent: :destroy
   belongs_to :category, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  def self.count_by_location
+    Job.group(:city).count
+  end
 end
