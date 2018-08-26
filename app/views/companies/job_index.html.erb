@@ -1,10 +1,10 @@
-<h1>All Jobs</h1>
+All Jobs for <strong><%= @company.name %></strong>
 <%= link_to 'Add New Job', new_job_path %>
-<% @jobs.each do |job| %>
+<% @company.jobs.each do |job| %>
   <ul>
     <li><%= job.title %></li>
     <li><%= job.company.name %></li>
-    <li id="level-of-interest-job-<%= job.id %>"><%= job.level_of_interest %></li>
+    <li><%= job.level_of_interest %></li>
     <li><%= job.city %></li>
     <li><%= link_to "Edit", edit_job_path(job) %></li>
     <li><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: 'Really delete job?'} %></li>

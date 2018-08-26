@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 describe "User can edit a job" do
-  scenario "a user clicks edit on company job page" do
+  scenario "a user clicks edit on job page" do
     category = Category.create!(name: 'Test Category')
     company = Company.create!(name: "ESPN")
     job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category_id: category.id)
 
-    visit company_path(company)
+    visit job_path(job)
 
     click_link "Edit"
 
-    expect(current_path).to eq(edit_company_job_path(company, job))
+    expect(current_path).to eq(edit_job_path(job))
 
     fill_in "job[title]", with: "Analyst"
     fill_in "job[description]", with: "So fun!"
@@ -19,7 +19,7 @@ describe "User can edit a job" do
 
     click_button "Update"
 
-    expect(current_path).to eq(company_job_path(company, job))
+    expect(current_path).to eq(job_path(job))
     expect(page).to have_content("Analyst")
     expect(page).to have_content("So fun!")
     expect(page).to have_content("5")

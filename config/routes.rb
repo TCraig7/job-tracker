@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :companies do
-    resources :jobs do
-      resources :comments
-    end
+  resources :companies
+  get '/companies/:id/jobs', to: 'companies#job_index', as: :company_jobs
+  resources :jobs do
+    resources :comments
   end
   resources :categories
   # The priority is based upon order of creation: first created -> highest priority.
