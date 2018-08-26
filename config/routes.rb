@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :companies
+  resources :companies do
+    resources :contacts
+  end
   get '/companies/:id/jobs', to: 'companies#job_index', as: :company_jobs
   resources :jobs do
     resources :comments
