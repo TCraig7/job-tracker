@@ -1,5 +1,6 @@
 <h1>All Jobs</h1>
-<%= link_to 'Add New Job', new_job_path %>
+<%= link_to 'Add New Job', new_job_path %><br>
+<%= link_to 'Interests', '/jobs?sort=Interest' %>
 <% @jobs.each do |job| %>
   <ul>
     <li><%= job.title %></li>
@@ -10,3 +11,9 @@
     <li><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: 'Really delete job?'} %></li>
   </ul>
 <% end %>
+
+<span id="sorted-jobs" style="display: none;" >
+<% @jobs.each do |job| %>
+<%= job.title %>
+<% end %>
+</span>

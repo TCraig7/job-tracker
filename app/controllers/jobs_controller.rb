@@ -4,6 +4,8 @@ class JobsController < ApplicationController
   def index
     if params[:location]
       @jobs = Job.where(city: params[:location])
+    elsif params[:sort]
+      @jobs = Job.order(level_of_interest: :desc)
     else
       @jobs = Job.all
     end
