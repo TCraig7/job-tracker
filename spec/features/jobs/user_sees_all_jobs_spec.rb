@@ -30,4 +30,20 @@ describe 'User sees all jobs' do
     end
     expect(page).to have_content(job3.city)
   end
+
+  describe 'User can filter jobs' do
+    scenario 'filter by location' do
+      company = Company.create!(name: "Google")
+      category = Category.create!(name: "Developer")
+      job1 = company.jobs.create!(title: "Junior Dev", description: "Junior Dev", level_of_interest: 4, city: "Boulder", category_id: category.id)
+      job2 = company.jobs.create!(title: "Junior Dev Ops", description: "Junior Dev Ops", level_of_interest: 3, city: "Boulder", category_id: category.id)
+      job3 = company.jobs.create!(title: "Junior Dev - remote", description: "Junior Dev - remote", level_of_interest: 5, city: "Denver", category_id: category.id)
+
+      visit "/jobs?location=Boulder"
+save_and_open_page
+      expect(page).to have_content(job1.title)
+      expect(page).to have_content(job2.title)
+      expect(page).to_not have_content(job3.title)
+    end
+  end
 end
