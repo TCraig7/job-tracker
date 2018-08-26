@@ -12,4 +12,16 @@ describe "User edits an existing company" do
     expect(page).to have_content("EA Sports")
     expect(page).to_not have_content("ESPN")
   end
+  scenario "a user attempts to edit a company with duplicate entry" do
+    company1 = Company.create!(name: 'ESPN')
+    company2 = Company.create!(name: 'ESPN 2')
+
+    visit edit_company_path(company2)
+
+    fill_in "company[name]", with: "ESPN"
+    click_button "Update"
+
+    expect(current_path).to eq(edit_company_path(company2))
+    expect(page).to have_content("Company 'ESPN' already exists!")
+  end
 end
