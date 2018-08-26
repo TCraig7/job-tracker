@@ -8,10 +8,10 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(company_params)
-    if @company.save
-      flash[:success] = "#{@company.name} added!"
-      redirect_to company_path(@company)
+    company = Company.new(company_params)
+    if company.save
+      flash[:success] = "#{company.name} added!"
+      redirect_to company_path(company)
     else
       flash[:failure] = "Company '#{params[:company][:name]}' already exists!"
       redirect_to new_company_path
