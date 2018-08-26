@@ -2,7 +2,13 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :destroy, :edit, :update]
 
   def index
-    @jobs = Job.all
+    if params[:location]
+      @jobs = Job.where(city: params[:location])
+    elsif params[:sort]
+      @jobs = Job.order(level_of_interest: :desc)
+    else
+      @jobs = Job.all
+    end
   end
 
   def new
