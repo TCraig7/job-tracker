@@ -22,6 +22,6 @@ describe "User edits an existing company" do
     click_button "Update"
 
     expect(current_path).to eq(edit_company_path(company2))
-    expect(page).to have_content("Company ESPN already exists!")
+    expect(page).to have_content("Company 'ESPN' already exists!")
   end
 end

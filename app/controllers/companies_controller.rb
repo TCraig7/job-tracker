@@ -13,7 +13,8 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} added!"
       redirect_to company_path(@company)
     else
-      render :new
+      flash[:failure] = "Company '#{params[:company][:name]}' already exists!"
+      redirect_to new_company_path
     end
   end
 
@@ -33,7 +34,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{company.name} updated!"
       redirect_to company_path(company)
     else
-      flash[:failure] = "Company #{params[:company][:name]} already exists!"
+      flash[:failure] = "Company '#{params[:company][:name]}' already exists!"
       redirect_to edit_company_path(company)
     end
   end
