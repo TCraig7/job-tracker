@@ -5,6 +5,29 @@ describe Job do
     @category = Category.create!(name: 'Some Category')
   end
   describe "Class Methods" do
+    it ".sort_by_interest" do
+      company = Company.create!(name: 'ESPN')
+      category = Category.create!(name: 'Tech')
+      job1 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 2, city: 'Denver', category_id: category.id)
+      job2 = company.jobs.create!(title: 'Dev 2', description: 'None', level_of_interest: 3, city: 'Denver', category_id: category.id)
+      job3 = company.jobs.create!(title: 'Dev 3', description: 'None', level_of_interest: 1, city: 'Boulder', category_id: category.id)
+
+      sorted_jobs = Job.sort_by_interest
+
+      expect(sorted_jobs).to eq([job2, job1, job3])
+    end
+    it ".filter_by_location" do
+      company = Company.create!(name: 'ESPN')
+      category = Category.create!(name: 'Tech')
+      job1 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Denver', category_id: category.id)
+      job2 = company.jobs.create!(title: 'Dev 2', description: 'None', level_of_interest: 5, city: 'Denver', category_id: category.id)
+      job3 = company.jobs.create!(title: 'Dev 3', description: 'None', level_of_interest: 5, city: 'Boulder', category_id: category.id)
+
+      filtered_jobs = Job.filter_by_location('Denver')
+
+      expect(filtered_jobs).to eq([job1, job2])
+      expect(filtered_jobs.size).to eq(2)
+    end
     it ".count_by_location" do
       company1 = Company.create!(name: 'ESPN')
       company2 = Company.create!(name: 'Google')
