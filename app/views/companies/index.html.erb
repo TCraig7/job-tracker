@@ -1,11 +1,11 @@
-<h3>All Companies</h3>
+<h1>Companies</h1>
 <h5><%= link_to 'Add New Company', new_company_path %></h5>
 <ul>
   <% @companies.each do |company| %>
   <li class=company_<%= company.id %>>
     <%= link_to company.name, company_path(company) %>:
     <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
+    <%= link_to "Delete", company_path(company), method: "delete", data: {confirm: "Really delete '#{company.name}'?"} %>
   </li>
   <% end %>
 </ul>

@@ -1,0 +1,21 @@
+body {
+  background-color: #0d324d;
+  font-family: 'Sawarabi Gothic', sans-serif;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #aab1b0;
+  background-color: #747178;
+}
+
+a {
+  color: #cfd8d7;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #aab1b0;
+  text-decoration: underline;
+}

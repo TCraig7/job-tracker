@@ -14,7 +14,7 @@ describe 'A user sees a job tracker dashboard' do
     job8 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Atlanta', category_id: category.id)
     job9 = company.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Portland', category_id: category.id)
 
-    visit dashboard_path
+    visit dashboard_index_path
 
     within("#job-count-by-location-#{job1.city}") do
       expect(page).to have_content(3)
@@ -48,7 +48,7 @@ describe 'A user sees a job tracker dashboard' do
     job8 = company3.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Atlanta', category_id: category.id)
     job9 = company4.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 2, city: 'Portland', category_id: category.id)
 
-    visit dashboard_path
+    visit dashboard_index_path
 
     within("#job-interest-by-company-#{company1.id}") do
       expect(page).to have_content(4.5)
@@ -76,8 +76,7 @@ describe 'A user sees a job tracker dashboard' do
     job8 = company3.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 4, city: 'Atlanta', category_id: category.id)
     job9 = company4.jobs.create!(title: 'Dev', description: 'None', level_of_interest: 5, city: 'Portland', category_id: category.id)
 
-    visit dashboard_path
-    save_and_open_page
+    visit dashboard_index_path
 
     within("#level-of-interest-count-5") do
       expect(page).to have_content(1)
