@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-
+  root 'dashboard#index'
   resources :companies do
     resources :jobs, only: [:index]
     resources :contacts
   end
   resources :jobs do
-    resources :comments
+    resources :comments, only: [:create]
   end
   resources :categories
   resources :dashboard, only: [:index]

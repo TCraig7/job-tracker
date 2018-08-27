@@ -5,10 +5,18 @@ class Job < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def self.count_by_location
-    Job.group(:city).order("count_all DESC").count
+    group(:city).order("count_all DESC").count
   end
 
   def self.count_by_interest
-    Job.group(:level_of_interest).order(level_of_interest: :desc).count
+    group(:level_of_interest).order(level_of_interest: :desc).count
+  end
+
+  def self.filter_by_location(city)
+    where(city: city)
+  end
+
+  def self.sort_by_interest
+    order(level_of_interest: :desc)
   end
 end

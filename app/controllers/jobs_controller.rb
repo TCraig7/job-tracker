@@ -2,12 +2,19 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :destroy, :edit, :update]
 
   def index
-    if params[:location]
-      @jobs = Job.where(city: params[:location])
+    if params[:company_id]
+      company = Company.find(params[:company_id])
+      if params[:sort]
+        @jobs = company.jobs.sort_by_interest
+      elsif params[:location]
+        @jobs = company.jobs.filter_by_location(params[:location])
+      else
+        @jobs = company.jobs
+      end
+    elsif params[:location]
+      @jobs = Job.filter_by_location(params[:location])
     elsif params[:sort]
-      @jobs = Job.order(level_of_interest: :desc)
-    elsif params[:company_id]
-      @jobs = Job.where(company_id: params[:company_id])
+      @jobs = Job.sort_by_interest
     else
       @jobs = Job.all
     end
@@ -31,8 +38,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
-    @comment.job_id = @job.id
+    @comment = @job.comments.new
   end
 
   def edit
