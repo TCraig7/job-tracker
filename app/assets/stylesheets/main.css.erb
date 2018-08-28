@@ -1,6 +1,6 @@
 body {
   font-family: 'Sawarabi Gothic', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   background-image: url(<%= image_url('background.jpg') %>);
   background-size: 200px;
 }
@@ -24,7 +24,7 @@ nav ul {
 
 nav li {
   display: inline;
-  padding: 5px 55px 5px 55px;
+  padding: 6px 55px 6px 55px;
 }
 
 nav li:hover {
@@ -39,6 +39,11 @@ nav a {
 nav a:hover {
   text-decoration: none;
   color: #fff;
+}
+
+nav li:active {
+  text-decoration: none;
+  background-color: #772128;
 }
 
 header h1 {
@@ -58,12 +63,76 @@ main.container {
   width: 50%;
   background-color: #ECE9C0;
   padding: 15px;
+  box-shadow: 5px 5px;
+  border: 3px solid black;
+}
+
+.failure {
+  background-color: tomato;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 1.25em;
+  color: black;
+}
+
+.success {
+  background-color: yellowgreen;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 1.25em;
+  color: black;
+}
+
+form, input, select {
+  display: block;
+  margin-bottom: 20px;
+  padding: 2px;
+}
+
+label {
+  margin-bottom: 3px;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #9b2933;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ba2e3a;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dashboard-table {
+  width: 100%;
+  padding: 10px;
+}
+
+.content-table {
+  width: 30%;
+  margin: auto;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.table-fit {
+  width: 30%;
 }
 
 .container {
   margin: auto;
-  width: 50%;
+  width: 60%;
   background-color: #edd9a3;
+  border-radius: 2%;
 }
 
 .grid-container {
@@ -77,6 +146,7 @@ main.container {
   margin: 20px;
   background-color: #D5D600;
   width: inherit;
+  border-radius: 10%;
 }
 
 .grid-item ul {
