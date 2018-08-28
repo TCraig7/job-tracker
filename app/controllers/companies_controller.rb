@@ -1,10 +1,12 @@
 class CompaniesController < ApplicationController
   def index
     @companies = Company.all
+    @header = "Companies"
   end
 
   def new
     @company = Company.new
+    @header = "Create a new company here!"
   end
 
   def job_index
@@ -26,10 +28,12 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @contact = Contact.new
     @contact.company_id = @company.id
+    @header = "Contact Information for #{@company.name}"
   end
 
   def edit
     @company = Company.find(params[:id])
+    @header = "Edit #{@company.name} here!"
   end
 
   def update
