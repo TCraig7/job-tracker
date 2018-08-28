@@ -3,10 +3,12 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @header = "Categories"
   end
 
   def new
     @category = Category.new
+    @header = "Add New Category"
   end
 
   def create
@@ -21,9 +23,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @header = "#{@category.name} Jobs"
   end
 
   def edit
+    @header = "Edit Category"
   end
 
   def update
