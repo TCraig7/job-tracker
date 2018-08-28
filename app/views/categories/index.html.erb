@@ -1,6 +1,16 @@
-<%= link_to 'Create New Category', new_category_path %><br />
-<ul>
+<h4 class="text-center"><%= link_to 'Create New Category', new_category_path %><br /></h4>
+<table class="data-table">
   <% @categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category) %> - <%= link_to "Edit", edit_category_path(category) %> - <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Really delete category #{category.name}?"}, id: "category-id-#{category.id}" %></li>
+    <tr>
+      <td class="data-cell">
+        <%= link_to category.name, category_path(category) %>
+      </td>
+      <td class="edit-delete data-cell">
+        <%= link_to "Edit", edit_category_path(category) %>
+      </td>
+      <td class="edit-delete data-cell">
+        <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Really delete category #{category.name}?"}, id: "category-id-#{category.id}" %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>

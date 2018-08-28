@@ -1,10 +1,16 @@
-<h5><%= link_to 'Add New Company', new_company_path %></h5>
-<ul>
+<h4 class="text-center"><%= link_to 'Add New Company', new_company_path %></h4>
+<table class="data-table">
   <% @companies.each do |company| %>
-  <li class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %>:
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete", data: {confirm: "Really delete '#{company.name}'?"} %>
-  </li>
+    <tr>
+      <td class="data-cell">
+        <%= link_to company.name, company_path(company) %>
+      </td>
+      <td class="edit-delete data-cell">
+        <%= link_to "Edit", edit_company_path(company) %>
+      </td>
+      <td class="edit-delete data-cell">
+        <%= link_to 'Delete', company_path(company), method: :delete, data: {confirm: "Really delete company #{company.name}?"}, id: "company-id-#{company.id}" %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>
