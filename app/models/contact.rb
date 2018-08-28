@@ -1,4 +1,4 @@
 class Contact < ApplicationRecord
   validates_presence_of :name, :position, :email
-  belongs_to :company
+  belongs_to :company, dependent: :destroy
 end

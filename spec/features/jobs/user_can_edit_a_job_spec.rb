@@ -14,7 +14,7 @@ describe "User can edit a job" do
 
     fill_in "job[title]", with: "Analyst"
     fill_in "job[description]", with: "So fun!"
-    fill_in "job[level_of_interest]", with: 5
+    select "5 stars", from: "job[level_of_interest]"
     fill_in "job[city]", with: "San Francisco"
 
     click_button "Update"

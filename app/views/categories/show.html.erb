@@ -1,10 +1,21 @@
-<% @category.jobs.each do |job| %>
-  <ul>
-    <li><%= job.title %></li>
-    <li><%= link_to job.company.name, company_path(job.company) %></li>
-    <li><%= job.city %></li>
-    <li><%= job.level_of_interest %></li>
-    <li><%= link_to 'Edit', edit_job_path(job) %></li>
-    <li><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: "Really delete #{job.title} job?"} %></li>
-  </ul>
-<% end %>
+<h4 class="text-center"><%= link_to 'Add New Job', new_job_path %></h4>
+<table class="data-table">
+  <thead>
+    <th>Title</th>
+    <th>Company</th>
+    <th><%= link_to 'Interest', 'jobs?sort=Interest' %></th>
+    <th>City</th>
+  </thead>
+  <tbody>
+    <% @category.jobs.each do |job| %>
+      <tr>
+        <td class="data-cell"><%= link_to job.title, job_path(job) %></td>
+        <td class="data-cell"><%= link_to job.company.name, company_path(job.company) %></td>
+        <td id="level-of-interest-job-<%= job.id %>" class="data-cell"><%= job.level_of_interest %></td>
+        <td class="data-cell"><%= link_to job.city, "/jobs?location=#{job.city}" %></td>
+        <td class="edit-delete data-cell"><%= link_to "Edit", edit_job_path(job) %></td>
+        <td class="edit-delete data-cell"><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: 'Really delete job?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

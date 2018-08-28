@@ -1,6 +1,6 @@
 body {
   font-family: 'Sawarabi Gothic', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   background-image: url(<%= image_url('background.jpg') %>);
   background-size: 200px;
 }
@@ -24,7 +24,7 @@ nav ul {
 
 nav li {
   display: inline;
-  padding: 5px 55px 5px 55px;
+  padding: 6px 55px 6px 55px;
 }
 
 nav li:hover {
@@ -41,6 +41,11 @@ nav a:hover {
   color: #fff;
 }
 
+nav li:active {
+  text-decoration: none;
+  background-color: #772128;
+}
+
 header h1 {
   font-family: 'Josefin Sans', sans-serif;
   color: #fff;
@@ -55,15 +60,122 @@ header h1 {
 
 main.container {
   margin: auto;
+  margin-bottom: 40px;
   width: 50%;
   background-color: #ECE9C0;
   padding: 15px;
+  box-shadow: 5px 5px;
+  border: 3px solid black;
+}
+
+.failure {
+  background-color: tomato;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 1.25em;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.success {
+  background-color: yellowgreen;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 1.25em;
+  margin-bottom: 10px;
+  color: black;
+}
+
+form, input, select {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 2px;
+}
+
+thead {
+  text-align: left;
+  font-size: 1.2em
+}
+
+input[type=submit] {
+    background-color: #772128;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    margin: 8px 2px;
+}
+
+label {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  display: block;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: #9b2933;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ba2e3a;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dashboard-table {
+  width: 100%;
+  padding: 10px;
+}
+
+.content-table {
+  width: 30%;
+  margin: auto;
+}
+
+.data-table {
+  width: 100%;
+  margin: auto;
+  padding: 5px;
+  border-collapse: collapse;
+}
+
+.data-cell {
+  padding: 10px 0;
+  border-width: 2px 0;
+  border-color: #000;
+  border-style: dashed;
+}
+
+.edit-delete {
+  width: 10%;
+}
+
+.data-time {
+  width: 25%;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.table-fit {
+  width: 30%;
 }
 
 .container {
   margin: auto;
-  width: 50%;
+  width: 60%;
   background-color: #edd9a3;
+  border-radius: 2%;
 }
 
 .grid-container {
@@ -77,6 +189,7 @@ main.container {
   margin: 20px;
   background-color: #D5D600;
   width: inherit;
+  border-radius: 10%;
 }
 
 .grid-item ul {
