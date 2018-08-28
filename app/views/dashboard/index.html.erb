@@ -1,32 +1,35 @@
-<h1>Job Tracker</h1>
+<div class="grid-container">
+  <div class="grid-item">
+    <table>
+      <% @count_by_interest.each do |interest_level, count| %>
+        <tr>
+          <td><%= interest_level %> out of 5</tr>
+          <td id="level-of-interest-count-<%= interest_level %>">
+            <%= count %>
+          </li>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="grid-item">
+    <table>
+      <% @companies_by_interest.each do |company| %>
+        <tr>
+          <td><%= company.name %></td>
+          <td id="job-interest-by-company-<%= company.id %>">
+            <%= company.avg_interest.round(1) %> Stars
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
 <% @jobs_by_location.each do |city, job_count| %>
   <ul>
     <li><%= city %> Jobs</li>
     <li id="job-count-by-location-<%= city %>">
       <%= job_count %> <%= job_count > 1 ? 'jobs' : 'job' %>
-    </li>
-  </ul>
-<% end %>
-
-<hr>
-
-<% @companies_by_interest.each do |company| %>
-  <ul>
-    <li><%= company.name %></li>
-    <li id="job-interest-by-company-<%= company.id %>">
-      <%= company.avg_interest.round(1) %> Stars
-    </li>
-  </ul>
-<% end %>
-
-<hr>
-
-<% @count_by_interest.each do |interest_level, count| %>
-  <ul>
-    <li><%= interest_level %> out of 5</li>
-    <li id="level-of-interest-count-<%= interest_level %>">
-      <%= count %>
     </li>
   </ul>
 <% end %>
