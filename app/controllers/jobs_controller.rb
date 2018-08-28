@@ -18,12 +18,14 @@ class JobsController < ApplicationController
     else
       @jobs = Job.all
     end
+    @header = "All Jobs"
   end
 
   def new
     @categories = Category.all
     @companies = Company.all
     @job = Job.new
+    @header = "Create a new job!"
   end
 
   def create
@@ -39,11 +41,13 @@ class JobsController < ApplicationController
 
   def show
     @comment = @job.comments.new
+    @header = "#{@job.title}"
   end
 
   def edit
     @categories = Category.all
     @companies  = Company.all
+    @header = "Edit Job '#{@job.title}'"
   end
 
   def update

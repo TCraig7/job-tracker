@@ -1,4 +1,3 @@
-Contact Information for <strong><%= @company.name %></strong><br />
 <%= link_to "All Jobs for #{@company.name}", company_jobs_path(@company) %>
 
 <%= form_for [@company, @contact] do |f| %>
