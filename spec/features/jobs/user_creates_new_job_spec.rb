@@ -23,7 +23,7 @@ describe "User creates a new job" do
     expect(current_path).to eq(job_path(Job.last))
     expect(page).to have_content("ESPN")
     expect(page).to have_content("Developer")
-    expect(page).to have_content("4 stars")
+    expect(page).to have_css(".rating-img", count: 4)
     expect(page).to have_content("Denver")
   end
   it 'has a link to create new category' do

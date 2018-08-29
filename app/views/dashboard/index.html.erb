@@ -4,7 +4,7 @@
     <table class="dashboard-table">
       <% @count_by_interest.each do |interest_level, count| %>
         <tr>
-          <td><%= interest_level %> out of 5</td>
+          <td><%= interest_to_star(interest_level).html_safe %></td>
           <td id="level-of-interest-count-<%= interest_level %>" class="table-fit">
             <%= count %> Jobs
           </li>

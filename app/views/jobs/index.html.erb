@@ -11,7 +11,9 @@
       <tr>
         <td class="data-cell"><%= link_to job.title, job_path(job) %></td>
         <td class="data-cell"><%= link_to job.company.name, company_path(job.company) %></td>
-        <td id="level-of-interest-job-<%= job.id %>" class="data-cell"><%= job.level_of_interest %></td>
+        <td id="level-of-interest-job-<%= job.id %>" class="data-cell">
+          <%= interest_to_star(job.level_of_interest).html_safe %>
+        </td>
         <td class="data-cell"><%= link_to job.city, "?location=#{job.city}" %></td>
         <td class="edit-delete data-cell"><%= link_to "Edit", edit_job_path(job) %></td>
         <td class="edit-delete data-cell"><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: 'Really delete job?'} %></td>

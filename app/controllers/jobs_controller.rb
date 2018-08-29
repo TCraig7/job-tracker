@@ -40,7 +40,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @comment = @job.comments.new
+    @comment = Comment.new
     @header = "#{@job.title}"
   end
 

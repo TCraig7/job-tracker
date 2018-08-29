@@ -4,7 +4,7 @@ describe "User can edit a job" do
   scenario "a user clicks edit on job page" do
     category = Category.create!(name: 'Test Category')
     company = Company.create!(name: "ESPN")
-    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category_id: category.id)
+    job = company.jobs.create!(title: "Developer", level_of_interest: 3, city: "Denver", category_id: category.id)
 
     visit job_path(job)
 
@@ -22,7 +22,7 @@ describe "User can edit a job" do
     expect(current_path).to eq(job_path(job))
     expect(page).to have_content("Analyst")
     expect(page).to have_content("So fun!")
-    expect(page).to have_content("5")
+    expect(page).to have_css(".rating-img", count: 5)
     expect(page).to have_content("San Francisco")
   end
 end
