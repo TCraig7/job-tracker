@@ -14,19 +14,19 @@ describe 'User sees all jobs' do
     expect(page).to have_content(job1.title)
     expect(page).to have_content(job1.company.name)
     within("#level-of-interest-job-#{job1.id}") do
-      expect(page).to have_content(job1.level_of_interest)
+      expect(page).to have_css(".rating-img", count: job1.level_of_interest)
     end
     expect(page).to have_content(job1.city)
     expect(page).to have_content(job2.title)
     expect(page).to have_content(job2.company.name)
     within("#level-of-interest-job-#{job2.id}") do
-      expect(page).to have_content(job2.level_of_interest)
+      expect(page).to have_css(".rating-img", count: job2.level_of_interest)
     end
     expect(page).to have_content(job2.city)
     expect(page).to have_content(job3.title)
     expect(page).to have_content(job3.company.name)
     within("#level-of-interest-job-#{job3.id}") do
-      expect(page).to have_content(job3.level_of_interest)
+      expect(page).to have_css(".rating-img", count: job3.level_of_interest)
     end
     expect(page).to have_content(job3.city)
   end

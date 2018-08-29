@@ -1,5 +1,8 @@
-
-    <tr>
-      <td class="data-cell data-time"><%= comment.created_at %></td>
-      <td class="data-cell"><%= comment.content %></td>
-    </tr>
+<tr>
+  <td class="data-cell data-time">
+    <%= time_ago_in_words(comment.created_at) %> ago
+  </td>
+  <td class="data-cell">
+    <%= comment.content %>
+  </td>
+</tr>

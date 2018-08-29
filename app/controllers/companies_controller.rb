@@ -9,10 +9,6 @@ class CompaniesController < ApplicationController
     @header = "Create a new company here!"
   end
 
-  def job_index
-    @company = Company.find(params[:id])
-  end
-
   def create
     company = Company.new(company_params)
     if company.save

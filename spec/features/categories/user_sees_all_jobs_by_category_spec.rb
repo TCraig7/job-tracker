@@ -11,16 +11,20 @@ describe 'User sees a list of all jobs by category' do
       visit categories_path
 
       click_link(category.name)
-      
+
       expect(current_path).to eq(category_path(category))
       expect(page).to have_content(job1.title)
       expect(page).to have_content(job1.company.name)
       expect(page).to have_content(job1.city)
-      expect(page).to have_content(job1.level_of_interest)
+      within("#level-of-interest-job-#{job1.id}") do
+        expect(page).to have_css(".rating-img", count: job1.level_of_interest)
+      end
       expect(page).to have_content(job2.title)
       expect(page).to have_content(job2.company.name)
       expect(page).to have_content(job2.city)
-      expect(page).to have_content(job2.level_of_interest)
+      within("#level-of-interest-job-#{job2.id}") do
+        expect(page).to have_css(".rating-img", count: job2.level_of_interest)
+      end
     end
   end
 end
